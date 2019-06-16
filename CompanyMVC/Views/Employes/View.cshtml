@@ -1,0 +1,114 @@
+﻿@model CompanyMVC.Entities.employee
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Employee @Model.name @Model.surname</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personal_nr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personal_nr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.identity_card_nr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identity_card_nr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.position)
+
+        <dd>
+            @Html.DisplayFor(model => model.position.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.department.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.work_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.work_type.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.schedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.schedule.start_time) - @Html.DisplayFor(model=>model.schedule.end_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id },new {@class="btn btn-waarning" }) |
+    @Html.ActionLink("Back to List", "Index",null,new {@class="btn btn-primary" })
+</p>

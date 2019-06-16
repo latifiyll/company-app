@@ -1,0 +1,106 @@
+﻿@model CompanyMVC.viewModels.ProjectsViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Project @Model.Project.name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.requirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.requirements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.budget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.department_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.department.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.end_date)
+        </dd>
+
+        
+
+    </dl>
+</div>
+
+
+<div>
+    <table class="table table-hover table-responsive  col-lg-4" >
+        <thead>
+            <tr>
+                <th>Employes working on this project</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Employees)
+            {
+            <tr>
+                <td>@item.FullName</td>
+            </tr>
+            }
+                
+        </tbody>
+        
+    </table>
+   
+
+   
+   
+
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Project.id },new {@class="btn btn-warning" }) |
+    @Html.ActionLink("Back to List", "Index",null, new { @class="btn btn-primary"})
+</p>

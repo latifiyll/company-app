@@ -1,0 +1,92 @@
+﻿@model IEnumerable<CompanyMVC.Entities.project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var index = 1;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new {@class="btn btn-primary" })
+</p>
+<table id="projects" class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.requirements)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.budget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.department_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.start_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.end_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.requirements)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.budget)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.department.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.start_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.end_date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("View", "View", new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+
+            index++;
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+    
+    <script>
+
+        $(document).ready(function () {
+
+            $("#projects").DataTable();
+        });
+
+    </script>
+    }

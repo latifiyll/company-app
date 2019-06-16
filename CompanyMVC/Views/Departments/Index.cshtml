@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CompanyMVC.Entities.department>
+
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var index = 1;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null,new {@class="btn btn-primary" })
+</p>
+<table id="departments" class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @index
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+
+                <button data-department-id="@item.id" class="btn btn-danger js-delete" id="departments">Delete</button>
+            </td>
+        </tr>
+            index++;
+        }
+    </tbody>
+
+</table>
+
+
+@section scripts 
+    
+    {
+    <script>
+        $(document).ready(function () {
+
+            var table = $("#departments").DataTable();
+
+            $("#departments").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("are you sure you want to delete this department?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/departments/delete/" + button.attr("data-department-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
+    }

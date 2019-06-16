@@ -1,0 +1,59 @@
+﻿@model CompanyMVC.Entities.employee_vacation
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Employee Vacation of @Model.employee.FullName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.employee.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employee.name) @Html.DisplayFor(model => model.employee.surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vacation.vacation_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vacation.vacation_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vac_days)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vac_days)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class="btn btn-warning"}) |
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
+</p>
