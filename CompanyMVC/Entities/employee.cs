@@ -28,17 +28,35 @@ namespace CompanyMVC.Entities
 
         [Display(Name = "Surname")]
         public string surname { get; set; }
+
+        [Display(Name ="Personal Number")]
         public Nullable<int> personal_nr { get; set; }
+
+        [Display(Name = "Identity Card Number")]
         public Nullable<int> identity_card_nr { get; set; }
+
+        [Display(Name = "Position")]
         public int position_id { get; set; }
+
+        [Display(Name = "Department")]
         public int department_id { get; set; }
+
+        [Display(Name = "Work Type")]
         public int work_type_id { get; set; }
+
+        [Display(Name = "Schedule")]
         public int schedule_id { get; set; }
+
+        [Display(Name ="Salary")]
         public string salary { get; set; }
 
         [Display(Name = "Email")]
         public string email { get; set; }
+
+        [Display(Name = "Start Date")]
         public Nullable<System.DateTime> start_date { get; set; }
+
+        [Display(Name = "End Date")]
         public Nullable<System.DateTime> end_date { get; set; }
 
         [Display(Name = "Department")]

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using CompanyMVC.viewModels;
 using System.Data.Entity.Validation;
+using AutoMapper;
 
 namespace CompanyMVC.Controllers
 {
@@ -15,7 +16,7 @@ namespace CompanyMVC.Controllers
     {
         private companyDb ConDb = new companyDb();
 
-        
+
         // GET: Employes
         public ActionResult Index()
         {
@@ -50,7 +51,7 @@ namespace CompanyMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( EmployeeViewModel employee)
+        public ActionResult Create(EmployeeViewModel employee)
         {
             try
             {
@@ -96,9 +97,17 @@ namespace CompanyMVC.Controllers
         {
 
             var employeeInDb = ConDb.employees.SingleOrDefault(e => e.id == id);
+            var positionInDb = ConDb.positions.ToList();
+            var departmentsInDb = ConDb.departments.ToList();
+            var worktypeInDb = ConDb.work_type.ToList();
+            var scheduleInDb = ConDb.schedules.ToList();
 
             EmployeeViewModel employeeViewModel = new EmployeeViewModel();
             employeeViewModel.Employees = employeeInDb;
+            employeeViewModel.Position = positionInDb;
+            employeeViewModel.Department = departmentsInDb;
+            employeeViewModel.WorkType = worktypeInDb;
+            employeeViewModel.Schedule = scheduleInDb;
 
             return View(employeeViewModel);
         }
@@ -108,7 +117,7 @@ namespace CompanyMVC.Controllers
             var employeesInDb = ConDb.employees.SingleOrDefault(e => e.id == id);
             if (employee.Employees.id != 0)
             {
-                
+
 
                 employeesInDb.name = employee.Employees.name;
                 employeesInDb.surname = employee.Employees.surname;
@@ -120,7 +129,7 @@ namespace CompanyMVC.Controllers
                 employeesInDb.schedule_id = employee.Employees.schedule_id;
                 employeesInDb.salary = employee.Employees.salary;
                 employeesInDb.email = employee.Employees.email;
-                employeesInDb.start_date = employee.Employees.start_date;   
+                employeesInDb.start_date = employee.Employees.start_date;
                 employeesInDb.end_date = employee.Employees.end_date;
             }
 
@@ -129,7 +138,7 @@ namespace CompanyMVC.Controllers
 
             return RedirectToAction("Index", "Employes");
         }
-        
+
 
         public ActionResult Delete(int id)
         {
@@ -141,7 +150,7 @@ namespace CompanyMVC.Controllers
 
             return RedirectToAction("Index", "Employes");
         }
-        
+
     }
 
 }

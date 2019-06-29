@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CompanyMVC.ExtensionMethods;
+using System.Data.Entity;
 
 namespace CompanyMVC.Controllers
 {
@@ -40,6 +41,7 @@ namespace CompanyMVC.Controllers
                 Vacations = vacationType
 
             };
+            //var vacViewModel = AutoMapper.Mapper.Map<List<employee_vacation>, List<VacationViewModel>>();
             return View(vacViewModel);
         }
         [HttpPost]
@@ -79,7 +81,7 @@ namespace CompanyMVC.Controllers
                 employee_Vacation.Vacations = ConDb.vacations.ToList();
                 return View(employee_Vacation);
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
                 throw;
@@ -90,9 +92,11 @@ namespace CompanyMVC.Controllers
         public ActionResult Edit(int id)
         {
             var empl_vacInDb = ConDb.employee_vacation.SingleOrDefault(ev => ev.id == id);
+            var vacationsTypeInDb = ConDb.vacations.ToList();
 
             VacationViewModel vacViewModel = new VacationViewModel();
             vacViewModel.Empl_vac = empl_vacInDb;
+            vacViewModel.Vacations = vacationsTypeInDb;
 
             return View(vacViewModel);
         }
@@ -100,19 +104,28 @@ namespace CompanyMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, VacationViewModel employee_Vacation)
         {
-            var employeeVac = ConDb.employee_vacation.SingleOrDefault(ev => ev.id == id);
-
-            if (employee_Vacation.Empl_vac.id != 0)
+            try
             {
-                employeeVac.employee_id = employee_Vacation.Empl_vac.employee_id;
-                employeeVac.vacation_id = employee_Vacation.Empl_vac.vacation_id;
-                employeeVac.vac_days = employee_Vacation.Empl_vac.vac_days;
-                employeeVac.start_date = employee_Vacation.Empl_vac.start_date;
-                //employeeVac.end_date = employee_Vacation.Empl_vac.end_date;
-            }
-            ConDb.SaveChanges();
+                var employeeVac = ConDb.employee_vacation.SingleOrDefault(ev => ev.id == id);
 
-            return RedirectToAction("Index");
+                if (employee_Vacation.Empl_vac.id != 0)
+                {
+                    employeeVac.employee_id = employee_Vacation.Empl_vac.employee_id;
+                    employeeVac.vacation_id = employee_Vacation.Empl_vac.vacation_id;
+                    employeeVac.vac_days = employee_Vacation.Empl_vac.vac_days;
+                    employeeVac.start_date = employee_Vacation.Empl_vac.start_date;
+                    //employeeVac.end_date = employee_Vacation.Empl_vac.end_date;
+                }
+                ConDb.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception exception)
+            {
+
+                throw exception;
+            }
+           
         }
         public ActionResult Delete(int id)
         {
