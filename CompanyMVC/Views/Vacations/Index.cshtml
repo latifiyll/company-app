@@ -5,89 +5,102 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-primary"})    
-</p>
-<table id ="employee_vac" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.employee.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.vacation.vacation_type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.vac_days)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.start_date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.end_date)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.employee.name)  @Html.DisplayFor(modelItem => item.employee.surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.vacation.vacation_type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.vac_days)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.start_date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.end_date)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id },new {@class="btn btn-warning" }) 
-                    @Html.ActionLink("View", "View", new { id = item.id }, new { @class = "btn btn-primary" }) 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
-                    <button data-employee-id="@item.id" class="btn btn-default  js-delete" id="employee_vac">Delete AJAX</button>
-                </td>
-            </tr>
-        }
-    </tbody>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Index</strong>
+                        <p>
+                            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <table id="employee_vac" class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.employee.name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vacation.vacation_type)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.vac_days)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.start_date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.end_date)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.employee.name)  @Html.DisplayFor(modelItem => item.employee.surname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vacation.vacation_type)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vac_days)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.start_date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.end_date)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("View", "View", new { id = item.id }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                                            <button data-employee-id="@item.id" class="btn btn-default  js-delete" id="employee_vac">Delete AJAX</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
 
-</table>
-
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts {
-            <script>
+    <script>
 
-               
 
-                $(document).ready(function () {
 
-                   var table = $("#employee_vac").DataTable();
+        $(document).ready(function () {
 
-                    $("#employee_vac").on("click",".js-delete", function () {
-                        var button = $(this);
-                        bootbox.confirm("Are you sure you want to delete this row?", function (result) {
-                            if (result) {
-                                $.ajax({
-                                    url: "/api/employee_vac/" + button.attr("data-employee-id"),
-                                    type: "DELETE",
-                                    success: function () {
-                                        table.row(button.parents("tr")).remove().draw(); 
-                                    }
-                                });
+            var table = $("#employee_vac").DataTable();
+
+            $("#employee_vac").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this row?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/employee_vac/" + button.attr("data-employee-id"),
+                            type: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         });
-                        
-                    });
+                    }
                 });
-            </script>
 
-    }
+            });
+        });
+    </script>
+
+}

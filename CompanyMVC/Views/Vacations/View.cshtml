@@ -5,55 +5,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
 
-<div>
-    <h4>Employee Vacation of @Model.employee.FullName</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.employee.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.employee.name) @Html.DisplayFor(model => model.employee.surname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.vacation.vacation_type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.vacation.vacation_type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.vac_days)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.vac_days)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.start_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.start_date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.end_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.end_date)
-        </dd>
-
-    </dl>
+                    <div class="card-body card-block">
+                        <h4>Employee @Model.employee.FullName</h4>
+                        <br />
+                        
+                        
+                        
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.employee.name):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static"> @Html.DisplayFor(model => model.employee.name) @Html.DisplayFor(model => model.employee.surname)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.vacation.vacation_type):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.vacation.vacation_type)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.vac_days):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.vac_days)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.start_date):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.start_date)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.end_date):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.end_date)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }, new { @class="btn btn-warning"}) |
-    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
-</p>
+
+

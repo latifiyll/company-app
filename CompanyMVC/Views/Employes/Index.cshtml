@@ -7,84 +7,97 @@
     var index = 1;
 }
 
-<h2>Employees</h2>
-
-    @Html.ActionLink("Create New", "Create",null, new { @class="btn btn-primary" })
-
-<br />
 
 
-<table id="employees" class="table table-striped table-responsive">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.position)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.department)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.work_type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.schedule)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-           
-            
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Employees</strong>
+                        <p>
+                            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+                        </p>
+                    </div>
+                    <div class="card-body">
 
-        @foreach (var item in Model)
-           
-        {
+                        <table id="employees" class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.surname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.position)
+                                    </th>
 
-        <tr>
-            <th scope="row">@index</th>
-            <td>@Html.DisplayFor(modelItem => item.name)</td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.department)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.work_type)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.schedule)
+                                    </th>
 
-            <td>@Html.DisplayFor(modelItem => item.surname)</td>
-
-            <td>@Html.DisplayFor(modelItem => item.position.name)</td>
-
-            <td>@Html.DisplayFor(modelItem => item.department.name)</td>
-
-            <td>@Html.DisplayFor(modelItem => item.WorkType)</td>
-
-            <td>@Html.DisplayFor(modelItem => item.schedule.start_time) - @Html.DisplayFor(modelItem => item.schedule.end_time)</td>
-
-            <td>@Html.DisplayFor(modelItem => item.email)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
-                @Html.ActionLink("View", "View", new { id = item.id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
-                @*<a href='@Url.Action("Delete", new { id= item.id})'>Delete</a>*@
-            </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.email)
+                                    </th>
 
 
-        </tr>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-            index++;
+                                @foreach (var item in Model)
 
-        }
+                                {
+
+                                    <tr>
+                                        <th scope="row">@index</th>
+                                        <td>@Html.DisplayFor(modelItem => item.name)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.surname)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.position.name)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.department.name)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.WorkType)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.schedule.start_time) - @Html.DisplayFor(modelItem => item.schedule.end_time)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.email)</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("View", "View", new { id = item.id }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                                            @*<a href='@Url.Action("Delete", new { id= item.id})'>Delete</a>*@
+                                        </td>
 
 
-    </tbody>
-</table>
+                                    </tr>
 
+                                    index++;
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @section scripts {
     <script>
         $(document).ready(function () {
@@ -93,5 +106,5 @@
         });
 
     </script>
-    
-    }
+
+}

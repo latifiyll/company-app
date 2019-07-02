@@ -4,43 +4,141 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+   
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Blackstone eIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Employees", "Index", "Employes")</li>
-                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
-                    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
-                    <li>@Html.ActionLink("Vacations", "Index", "Vacations")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Blackstone eIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Employees", "Index", "Employes")</li>
+                        <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                        <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+                        <li>@Html.ActionLink("Vacations", "Index", "Vacations")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+        <div class="container body-content">*@
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm ">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href=""><img src="~/Content/uploads/log.svg" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    <h3 class="menu-title">Message</h3><!-- /.menu-title -->
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="@Url.Action("Index", "Home")" class="dropdown-toggle">
+                            <i class="menu-icon ti-email"></i> Home
+                        </a>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="@Url.Action("Index","Projects")" class="dropdown-toggle" aria-expanded="false">
+                            <i class="menu-icon fa fa-handshake-o"></i>Projects
+                        </a>
+
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="@Url.Action("Index","Departments")" class="dropdown-toggle" aria-expanded="false">
+                            <i class="menu-icon fa fa-handshake-o"></i>Departments
+                        </a>
+
+                    </li>
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="@Url.Action("Index","Vacations")" class="dropdown-toggle" aria-expanded="false">
+                            <i class="menu-icon fa fa-handshake-o"></i>Vacations
+                        </a>
+
+                    </li>
+
+
+                    <h3 class="menu-title">Company</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown ">
+                        <a href="@Url.Action("Index","Employes")" class="dropdown-toggle" aria-expanded="false">
+                            <i class="menu-icon fa fa-handshake-o"></i>Employees
+                        </a>
+
+                    </li>
+
+                </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+    </aside><!-- /#left-panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <i class="fa fa-calendar"></i>  
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="dropdown-item" href=""><i class="fa fa- user"></i>My Profile</a>
+
+                            <form action="" method="POST">
+                               
+                                <button type="submit"
+                                        class="dropdown-item">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
         @RenderBody()
-        <hr />
+    </div>
+        @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - BlackStone eIT</p>
-        </footer>
-    </div>
+        </footer>*@
+    
 
-   
+
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

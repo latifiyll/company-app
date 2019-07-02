@@ -7,100 +7,95 @@
     
 }
 
-<h2>View</h2>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
 
-<div>
-    <h4>Project @Model.Project.name</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.name)
-        </dt>
+                    <div class="card-body card-block">
+                        <h4>View Project @Model.Project.name</h4>
+                        <br />
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.name):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.name)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.company):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.company)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.requirements):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.requirements)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.budget):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.budget)</p>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.company)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.company)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.requirements)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.requirements)
-        </dd>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.department_id):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.department.name)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.start_date):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.start_date)</p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label class=" form-control-label">@Html.DisplayNameFor(model => model.Project.end_date):</label></div>
+                            <div class="col-12 col-md-9">
+                                <p class="form-control-static">@Html.DisplayFor(model => model.Project.end_date)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Project.id }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                </p>
+                <div>
+                    <table class="table table-hover table-responsive  col-lg-4">
+                        <thead>
+                            <tr>
+                                <th>Employes working on this project</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Employees)
+                            {
+                                <tr>
+                                    <td>@item.FullName</td>
+                                </tr>
+                            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.budget)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Project.budget)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.department_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Project.department.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.start_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Project.start_date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.end_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Project.end_date)
-        </dd>
-
-        
-
-    </dl>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+    </div>
 </div>
 
 
-<div>
-    <table class="table table-hover table-responsive  col-lg-4" >
-        <thead>
-            <tr>
-                <th>Employes working on this project</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Employees)
-            {
-            <tr>
-                <td>@item.FullName</td>
-            </tr>
-            }
-                
-        </tbody>
+
+
+
         
-    </table>
-   
+    
 
-   
-   
-
-
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Project.id },new {@class="btn btn-warning" }) |
-    @Html.ActionLink("Back to List", "Index",null, new { @class="btn btn-primary"})
-</p>

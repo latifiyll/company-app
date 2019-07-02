@@ -388,6 +388,8 @@
     <Content Include="Content\uploads\eCommerce-website-builders.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\uploads\log.svg" />
+    <Content Include="Content\uploads\real-simple.svg" />
     <Content Include="Entities\companyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>companyDB.edmx</DependentUpon>
