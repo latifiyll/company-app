@@ -384,6 +384,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\uploads\admin.jpg" />
     <Content Include="Content\uploads\bloglanding1.jpg" />
     <Content Include="Content\uploads\eCommerce-website-builders.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
